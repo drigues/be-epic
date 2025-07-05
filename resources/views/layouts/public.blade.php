@@ -12,8 +12,9 @@
     rel="stylesheet" crossorigin="anonymous"
   >
 
-  {{-- Your sitewide CSS/JS bundles --}}
-  @vite(['resources/css/app.css','resources/js/app.js'])
+   <!-- 2) Your built CSS/JS -->
+    <link rel="stylesheet" href="{{ asset('build/assets/app.css') }}">
+    <script src="{{ asset('build/assets/app.js') }}" defer></script>
 </head>
 <body class="d-flex flex-column min-vh-100">
 

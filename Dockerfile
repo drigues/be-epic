@@ -1,58 +1,49 @@
-############################################################
-# 1) Frontend builder — compile your Bootstrap/Vite assets
-############################################################
-FROM node:18-alpine AS builder
-
-WORKDIR /app
-
-# copy only package files so Docker layer cache can be effective
-COPY package.json package-lock.json vite.config.js ./
-
-# copy your raw frontend sources
-COPY resources resources
-
-# install & build
-RUN npm ci
-RUN npm run build   # outputs to `dist/` by default
-
-############################################################
-# 2) PHP runtime — your Laravel app
-############################################################
+# ───────────────────────────────────────────────────────────────
+# 1) Base image
+# ───────────────────────────────────────────────────────────────
 FROM php:8.4-fpm
 
-# install system libs + pgsql driver
-RUN apk add --no-cache \
-      libpq \
+# ───────────────────────────────────────────────────────────────
+# 2) System dependencies & PHP extensions
+# ───────────────────────────────────────────────────────────────
+RUN apt-get update && apt-get install -y \
+      libpq-dev \
       git \
       unzip \
-    && docker-php-ext-install pdo_pgsql
+    && docker-php-ext-install pdo_pgsql \
+    && rm -rf /var/lib/apt/lists/*
 
-# install composer cli
+# ───────────────────────────────────────────────────────────────
+# 3) Install Composer
+# ───────────────────────────────────────────────────────────────
 COPY --from=composer:2 /usr/bin/composer /usr/bin/composer
 
-# set working dir
+# ───────────────────────────────────────────────────────────────
+# 4) Set working directory
+# ───────────────────────────────────────────────────────────────
 WORKDIR /app
 
-# copy composer files & install
+# ───────────────────────────────────────────────────────────────
+# 5) Install PHP dependencies
+# ───────────────────────────────────────────────────────────────
 COPY composer.json composer.lock ./
 RUN composer install --no-dev --no-scripts --optimize-autoloader
 
-# copy the rest of your Laravel app
+# ───────────────────────────────────────────────────────────────
+# 6) Copy application code
+# ───────────────────────────────────────────────────────────────
 COPY . .
 
-# bring in the compiled frontend assets
-COPY --from=builder /app/dist public/dist
-
-# cache config/routes/views and fix permissions
+# ───────────────────────────────────────────────────────────────
+# 7) Cache config/routes/views & fix permissions
+# ───────────────────────────────────────────────────────────────
 RUN php artisan config:cache \
  && php artisan route:cache \
  && php artisan view:cache \
  && chown -R www-data:www-data storage bootstrap/cache
 
-# tell Docker (and Render) what port we’ll bind to
-# actual value comes from the $PORT env var later
+# ───────────────────────────────────────────────────────────────
+# 8) Expose port & start
+# ───────────────────────────────────────────────────────────────
 EXPOSE 9000
-
-# on start: migrate (force), then serve on $PORT
-ENTRYPOINT ["sh","-c"]
-CMD ["php artisan migrate --force && php artisan serve --host=0.0.0.0 --port=${PORT:-9000}"]
+CMD ["sh","-c","php artisan migrate --force && php artisan serve --host=0.0.0.0 --port=9000"]
