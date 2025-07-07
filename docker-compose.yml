@@ -5,11 +5,13 @@ services:
     build:
       context: .
       dockerfile: Dockerfile
-    command: php artisan serve --host=0.0.0.0 --port=9000
-    volumes:
-      - ./:/app
+    # Use the same CMD as in Dockerfile (caches at runtime)
+    environment:
+      - PORT=9000
     ports:
       - "8000:9000"
+    volumes:
+      - ./:/app
     env_file:
       - .env
     depends_on:
