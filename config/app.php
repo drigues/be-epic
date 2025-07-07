@@ -2,6 +2,9 @@
 
 return [
 
+    'launched'  => env('APP_LAUNCHED', false),
+    'dev_mode'  => env('DEV_MODE',   false),
+
     /*
     |--------------------------------------------------------------------------
     | Application Name

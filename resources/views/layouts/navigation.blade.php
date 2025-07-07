@@ -1,7 +1,7 @@
 <nav class="navbar navbar-expand-lg navbar-light bg-white shadow-sm">
   <div class="container">
     <a class="navbar-brand" href="{{ route('dashboard') }}">
-      <img src="{{ asset('images/beepicc.svg') }}" height="32" alt="Beepicc">
+      <img src="{{ asset('images/clinky.svg') }}" height="32" alt="Clinky">
     </a>
 
     <button class="navbar-toggler" type="button" 

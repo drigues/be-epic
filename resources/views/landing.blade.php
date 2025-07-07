@@ -8,13 +8,13 @@
       <h1 class="display-4 fw-bold">A Link in Bio made for you!</h1>
       <p class="lead text-dark">
         Be one of the early-birds and claim your 
-        <code>beepi.cc/{username}</code> before anyone else.
+        <code>clinky.cc/{username}</code> before anyone else.
       </p>
 
       <form action="{{ route('register') }}" method="get" 
             class="row g-2 justify-content-center mt-4">
         <div class="col-auto input-group" style="max-width: 400px;">
-          <span class="input-group-text">beepi.cc/</span>
+          <span class="input-group-text">clinky.cc/</span>
           <input name="username" type="text" class="form-control" 
                  placeholder="yourname" required>
           <button class="btn btn-outline-dark">Claim Now</button>
@@ -76,7 +76,7 @@
       <form action="{{ route('register') }}" method="get" 
             class="row g-2 justify-content-center">
         <div class="col-auto input-group" style="max-width: 400px;">
-          <span class="input-group-text">beepi.cc/</span>
+          <span class="input-group-text">clinky.cc/</span>
           <input name="username" type="text" class="form-control" 
                  placeholder="yourname" required>
           <button class="btn btn-outline-dark">Claim</button>

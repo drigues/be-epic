@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <title>{{ config('app.name', 'Beepicc') }}</title>
+  <title>{{ config('app.name', 'Clinky') }}</title>
 
   <!-- 1) Bootstrap CSS via CDN -->
   <link
