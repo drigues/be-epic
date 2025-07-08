@@ -29,9 +29,9 @@
 
           {{-- Your Directory --}}
           <div class="mb-4">
-            <label class="form-label">beepi.cc/</label>
+            <label class="form-label">Your Directory</label>
             <div class="input-group">
-              <span class="input-group-text">beepi.cc/</span>
+              <span class="input-group-text">clinky.cc/</span>
               <input
                 type="text"
                 name="username"

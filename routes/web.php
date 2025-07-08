@@ -5,8 +5,12 @@ use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\PageController;
 use App\Http\Controllers\LinkController;
 
+//base64:uGDqREIvLNXZLuVG4fwh/DvW3xsArSAOG2kc47E1wKM=
+//base64:uGDqREIvLNXZLuVG4fwh/DvW3xsArSAOG2kc47E1wKM=
+
 // ─── PUBLIC PAGES ───────────────────────────────────────────────────────────────
 Route::view('/',        'coming-soon')->name('coming-soon');
+//Route::view('/', 'landing')->name('landing');
 Route::view('/landing', 'landing')->name('landing');
 Route::view('/terms',   'static.terms')->name('terms');
 Route::view('/privacy', 'static.privacy')->name('privacy');
