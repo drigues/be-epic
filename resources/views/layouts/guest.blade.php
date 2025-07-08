@@ -48,7 +48,7 @@
         <div class="col-md-3 mb-3">
           <h6 class="text-uppercase">Home</h6>
           <ul class="list-unstyled">
-            <li><a href="{{ route('home') }}" class="text-light">Home</a></li>
+            <li><a href="{{ route('landing') }}" class="text-light">Home</a></li>
             <li><a href="#how-it-works" class="text-light">How it works</a></li>
             <li><a href="#cases" class="text-light">Cases</a></li>
             <li><a href="#faqs" class="text-light">FAQs</a></li>
@@ -57,7 +57,7 @@
         <div class="col-md-3 mb-3">
           <h6 class="text-uppercase">Pages</h6>
           <ul class="list-unstyled">
-            <li><a href="{{ route('home') }}" class="text-light">Home</a></li>
+            <li><a href="{{ route('landing') }}" class="text-light">Home</a></li>
             <li><a href="{{ route('cookies') }}" class="text-light">Cookies</a></li>
             <li><a href="{{ route('privacy') }}" class="text-light">Privacy</a></li>
             <li><a href="{{ route('terms') }}" class="text-light">Terms</a></li>

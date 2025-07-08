@@ -69,5 +69,6 @@ class RegisteredUserController extends Controller
 
         session()->flash('status', 'Welcome aboard! Your directory has been created.');
         return redirect()->route('dashboard');
+        
     }
 }
