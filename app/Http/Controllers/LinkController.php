@@ -9,20 +9,26 @@ use Illuminate\Validation\Rule;
 
 class LinkController extends Controller
 {
-    // still nested: list links under a page
+    /**
+     * List links under a given page.
+     */
     public function index(Page $page)
     {
         $links = $page->links()->get();
         return view('links.index', compact('page','links'));
     }
 
-    // still nested: show the “add new” form under a page
+    /**
+     * Show the “add new” form under a given page.
+     */
     public function create(Page $page)
     {
         return view('links.create', compact('page'));
     }
 
-    // still nested: handle the POST /pages/{page}/links
+    /**
+     * Persist a new link, then go back to Edit Page.
+     */
     public function store(Request $request, Page $page)
     {
         $data = $request->validate([
@@ -35,50 +41,53 @@ class LinkController extends Controller
         $page->links()->create($data);
 
         return redirect()
-            ->route('pages.links.index', $page)
-            ->with('status','Link added!');
+            ->route('pages.edit', $page)
+            ->with('status', 'Link added!');
     }
 
     //
-    // SHALLOW routes from here on—only {link} is passed in
+    // Shallow routes from here on—only {link} is passed in
     //
 
-    // GET  /links/{link}/edit
+    /**
+     * Show the edit form for an existing link.
+     */
     public function edit(Link $link)
     {
-        // grab its page so we can re-nest for the form
         $page = $link->page;
         return view('links.edit', compact('page','link'));
     }
 
-    // PUT /links/{link}
+    /**
+     * Update a link, then go back to Edit Page.
+     */
     public function update(Request $request, Link $link)
     {
-        // validate just as before
         $data = $request->validate([
             'title'      => ['required','string','max:100'],
             'icon'       => ['nullable','string','max:50'],
-            'type'       => ['required',Rule::in(['social','portfolio','blog','youtube','custom'])],
+            'type'       => ['required', Rule::in(['social','portfolio','blog','youtube','custom'])],
             'url'        => ['required','url','max:255'],
             'sort_order' => ['nullable','integer'],
         ]);
 
         $link->update($data);
 
-        // redirect to nested index (needs the parent page)
         return redirect()
-            ->route('pages.links.index', $link->page)
-            ->with('status','Link updated!');
+            ->route('pages.edit', $link->page)
+            ->with('status', 'Link updated!');
     }
 
-    // DELETE /links/{link}
+    /**
+     * Delete a link, then go back to Edit Page.
+     */
     public function destroy(Link $link)
     {
         $page = $link->page;
         $link->delete();
 
         return redirect()
-            ->route('pages.links.index', $page)
-            ->with('status','Link deleted.');
+            ->route('pages.edit', $page)
+            ->with('status', 'Link deleted.');
     }
 }

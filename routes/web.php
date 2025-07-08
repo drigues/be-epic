@@ -5,13 +5,9 @@ use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\PageController;
 use App\Http\Controllers\LinkController;
 
-//base64:uGDqREIvLNXZLuVG4fwh/DvW3xsArSAOG2kc47E1wKM=
-//base64:uGDqREIvLNXZLuVG4fwh/DvW3xsArSAOG2kc47E1wKM=
-
 // ─── PUBLIC PAGES ───────────────────────────────────────────────────────────────
 Route::view('/',        'coming-soon')->name('coming-soon');
-//Route::view('/', 'landing')->name('landing');
-Route::view('/landing', 'landing')->name('landing');
+Route::view('/landing', 'landing')    ->name('landing');
 Route::view('/terms',   'static.terms')->name('terms');
 Route::view('/privacy', 'static.privacy')->name('privacy');
 Route::view('/cookies', 'static.cookies')->name('cookies');
@@ -31,11 +27,15 @@ Route::middleware(['auth','verified'])->group(function(){
          ->only(['index','create','store','edit','update','destroy'])
          ->scoped(['page'=>'username']);
 
-    // Links nested under pages, but “shallow” so edit/update/destroy drop {page}
+    // Links nested under pages (shallow)
     Route::resource('pages.links', LinkController::class)
          ->only(['index','create','store','edit','update','destroy'])
          ->scoped(['page'=>'username'])
          ->shallow();
+
+    // Custom reorder routes (must be inside auth so route() picks them up)
+    Route::post('links/{link}/move-up',   [LinkController::class,'moveUp'])->name('links.moveUp');
+    Route::post('links/{link}/move-down', [LinkController::class,'moveDown'])->name('links.moveDown');
 });
 
 // ─── BREEZE / JETSTREAM AUTH ROUTES ─────────────────────────────────────────────

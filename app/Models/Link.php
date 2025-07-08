@@ -3,7 +3,6 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class Link extends Model
 {
@@ -13,9 +12,18 @@ class Link extends Model
         'icon',
         'type',
         'url',
+        'sort_order',   // ← add this
     ];
 
-    public function page(): BelongsTo
+    // optional: ensure default sort_order if you ever do $link = new Link;
+    protected $attributes = [
+        'sort_order' => 0,
+    ];
+
+    /**
+     * Belongs to a Page.
+     */
+    public function page()
     {
         return $this->belongsTo(Page::class);
     }

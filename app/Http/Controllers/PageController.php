@@ -9,30 +9,39 @@ use Illuminate\Validation\Rule;
 class PageController extends Controller
 {
     /**
-     * List the current user’s page (or show none).
+     * List all of the current user’s pages.
      */
     public function index()
     {
-        $pages = auth()->user()->page
-            ? [auth()->user()->page]
-            : [];
-
+        $pages = auth()->user()->pages; 
         return view('pages.index', compact('pages'));
     }
 
     /**
-     * Show the “create page” form.
+     * Show the “create page” form (max 3).
      */
     public function create()
     {
+        if (auth()->user()->pages()->count() >= 3) {
+            return redirect()
+                ->route('dashboard')
+                ->with('error', 'You can only create up to 3 directories.');
+        }
+
         return view('pages.create');
     }
 
     /**
-     * Persist a new Page.
+     * Persist a new Page (max 3).
      */
     public function store(Request $request)
     {
+        if (auth()->user()->pages()->count() >= 3) {
+            return redirect()
+                ->route('dashboard')
+                ->with('error', 'You can only create up to 3 directories.');
+        }
+
         $data = $request->validate([
             'username'    => ['required','alpha_dash','unique:pages,username'],
             'profile_pic' => ['nullable','image','max:2048'],
@@ -52,7 +61,7 @@ class PageController extends Controller
                 ->store('pages/backgrounds', 'public');
         }
 
-        $page = auth()->user()->page()->create($data);
+        $page = auth()->user()->pages()->create($data);
 
         return redirect()
             ->route('pages.edit', $page)
@@ -60,7 +69,7 @@ class PageController extends Controller
     }
 
     /**
-     * Show a single page (with its links).
+     * Show a single page.
      */
     public function show(Page $page)
     {
@@ -73,6 +82,7 @@ class PageController extends Controller
      */
     public function edit(Page $page)
     {
+        $page->load('links');
         return view('pages.edit', compact('page'));
     }
 
@@ -81,19 +91,16 @@ class PageController extends Controller
      */
     public function update(Request $request, Page $page)
     {
-        // 1) Validate inputs, including slug uniqueness (ignore current record)
         $data = $request->validate([
             'username'    => [
-                'required',
-                'alpha_dash',
-                Rule::unique('pages', 'username')->ignore($page->id),
+                'required','alpha_dash',
+                Rule::unique('pages','username')->ignore($page->id),
             ],
             'profile_pic' => ['nullable','image','max:2048'],
             'background'  => ['nullable','image','max:4096'],
             'bio'         => ['nullable','string'],
         ]);
 
-        // 2) Handle file uploads
         if ($request->hasFile('profile_pic')) {
             $data['profile_pic'] = $request
                 ->file('profile_pic')
@@ -106,14 +113,6 @@ class PageController extends Controller
                 ->store('pages/backgrounds', 'public');
         }
 
-        // 3) If the directory slug changed, keep the User.name in sync
-        if ($data['username'] !== $page->username) {
-            $request->user()->update([
-                'name' => $data['username'],
-            ]);
-        }
-
-        // 4) Save the updated Page
         $page->update($data);
 
         return redirect()
@@ -122,14 +121,14 @@ class PageController extends Controller
     }
 
     /**
-     * Delete a page (and cascade-delete its links).
+     * Delete a page.
      */
     public function destroy(Page $page)
     {
         $page->delete();
 
         return redirect()
-            ->route('pages.index')
+            ->route('dashboard')
             ->with('status', 'Page deleted.');
     }
 }
