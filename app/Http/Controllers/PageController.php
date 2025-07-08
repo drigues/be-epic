@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Page;
 use Illuminate\Http\Request;
+use Illuminate\Validation\Rule;
 
 class PageController extends Controller
 {
@@ -32,7 +33,6 @@ class PageController extends Controller
      */
     public function store(Request $request)
     {
-        // 1) Validate inputs
         $data = $request->validate([
             'username'    => ['required','alpha_dash','unique:pages,username'],
             'profile_pic' => ['nullable','image','max:2048'],
@@ -40,22 +40,20 @@ class PageController extends Controller
             'bio'         => ['nullable','string'],
         ]);
 
-        // 2) Handle file uploads
         if ($request->hasFile('profile_pic')) {
             $data['profile_pic'] = $request
                 ->file('profile_pic')
-                ->store('pages/profile_pics','public');
+                ->store('pages/profile_pics', 'public');
         }
+
         if ($request->hasFile('background')) {
             $data['background'] = $request
                 ->file('background')
-                ->store('pages/backgrounds','public');
+                ->store('pages/backgrounds', 'public');
         }
 
-        // 3) Create the page via the user‐page relation
         $page = auth()->user()->page()->create($data);
 
-        // 4) Flash & redirect to the edit form
         return redirect()
             ->route('pages.edit', $page)
             ->with('status', 'Page created successfully!');
@@ -69,7 +67,7 @@ class PageController extends Controller
         $page->load('links');
         return view('pages.show', compact('page'));
     }
-    
+
     /**
      * Show the “edit page” form.
      */
@@ -83,23 +81,39 @@ class PageController extends Controller
      */
     public function update(Request $request, Page $page)
     {
+        // 1) Validate inputs, including slug uniqueness (ignore current record)
         $data = $request->validate([
+            'username'    => [
+                'required',
+                'alpha_dash',
+                Rule::unique('pages', 'username')->ignore($page->id),
+            ],
             'profile_pic' => ['nullable','image','max:2048'],
             'background'  => ['nullable','image','max:4096'],
             'bio'         => ['nullable','string'],
         ]);
 
+        // 2) Handle file uploads
         if ($request->hasFile('profile_pic')) {
             $data['profile_pic'] = $request
                 ->file('profile_pic')
-                ->store('pages/profile_pics','public');
+                ->store('pages/profile_pics', 'public');
         }
+
         if ($request->hasFile('background')) {
             $data['background'] = $request
                 ->file('background')
-                ->store('pages/backgrounds','public');
+                ->store('pages/backgrounds', 'public');
         }
 
+        // 3) If the directory slug changed, keep the User.name in sync
+        if ($data['username'] !== $page->username) {
+            $request->user()->update([
+                'name' => $data['username'],
+            ]);
+        }
+
+        // 4) Save the updated Page
         $page->update($data);
 
         return redirect()
@@ -108,7 +122,7 @@ class PageController extends Controller
     }
 
     /**
-     * Delete a page (and cascade‐delete its links).
+     * Delete a page (and cascade-delete its links).
      */
     public function destroy(Page $page)
     {
@@ -118,5 +132,4 @@ class PageController extends Controller
             ->route('pages.index')
             ->with('status', 'Page deleted.');
     }
-    
 }
