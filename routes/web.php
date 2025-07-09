@@ -17,6 +17,7 @@ Route::get('/auth/{provider}/callback', [SocialAuthController::class, 'handlePro
 
 Route::get('/{username}', [PageController::class, 'show'])->name('pages.show');
 
+Route::view('/privacy/delete', 'privacy.delete');
 
 
 // ─── AUTHENTICATED AREA ────────────────────────────────────────────────────────
