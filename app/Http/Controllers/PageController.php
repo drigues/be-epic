@@ -69,10 +69,25 @@ class PageController extends Controller
     }
 
     /**
-     * Show a single page.
+     * Show a page by its ID (admin/internal use).
      */
     public function show(Page $page)
     {
+        $page->load('links');
+        return view('pages.show', compact('page'));
+    }
+
+    /**
+     * Catch-all public username route (e.g. /johnny).
+     */
+    public function showPublic($username)
+    {
+        $page = Page::where('directory', $username)->first();
+
+        if (! $page) {
+            abort(404);
+        }
+
         $page->load('links');
         return view('pages.show', compact('page'));
     }

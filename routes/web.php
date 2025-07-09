@@ -12,6 +12,13 @@ Route::view('/terms',   'static.terms')->name('terms');
 Route::view('/privacy', 'static.privacy')->name('privacy');
 Route::view('/cookies', 'static.cookies')->name('cookies');
 
+Route::get('/auth/{provider}', [SocialAuthController::class, 'redirectToProvider']);
+Route::get('/auth/{provider}/callback', [SocialAuthController::class, 'handleProviderCallback']);
+
+Route::get('/{username}', [PageController::class, 'show'])->name('pages.show');
+
+
+
 // ─── AUTHENTICATED AREA ────────────────────────────────────────────────────────
 Route::middleware(['auth','verified'])->group(function(){
     // Dashboard
