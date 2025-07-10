@@ -1,4 +1,5 @@
 {{-- LAYOUTS/GUEST.BLADE.PHP --}}
+
 <!DOCTYPE html>
 <html lang="en">
 

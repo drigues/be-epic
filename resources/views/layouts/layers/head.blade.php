@@ -47,7 +47,11 @@
     integrity="sha384-…" crossorigin="anonymous">
 
 {{-- Built CSS/JS --}}
-@vite(['resources/css/app.css', 'resources/js/app.js'])
-@vite(['resources/css/guest.css', 'resources/js/guest.js'])
+@vite([
+  'resources/css/app.css',
+  'resources/js/app.js',
+  'resources/css/guest.css',
+  'resources/js/guest.js',
+])
 
 {{-- <title>{{ config('app.name', 'Clinky') }}</title> --}}

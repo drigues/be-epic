@@ -1,4 +1,5 @@
-{{-- resources/views/dashboard.blade.php --}}
+{{-- VIEWS/DASHBOARD.BLADE.PHP --}}
+
 @extends('layouts.app')
 
 @section('content')

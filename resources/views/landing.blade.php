@@ -1,4 +1,5 @@
 {{-- VIEW/LANDING.BLADE.PHP --}}
+
 @extends('layouts.guest')
 
 @section('content')

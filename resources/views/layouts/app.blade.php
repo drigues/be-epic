@@ -1,4 +1,7 @@
+{{-- LAYOUTS/APP.BLADE.PHP --}}
+
 {{-- AUTHENTICATED AREA --}}
+
 <!DOCTYPE html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 

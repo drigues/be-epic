@@ -1,3 +1,5 @@
+{{-- VIEWS/AUTH/LOGIN.BLADE.PHP --}}
+
 @extends('layouts.guest')
 
 {{-- Show a success or info message --}}
