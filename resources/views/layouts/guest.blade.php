@@ -17,10 +17,10 @@
 <body class="d-flex flex-column min-vh-100">
 
   {{-- NAVBAR --}}
-  <nav class="navbar navbar-light bg-white shadow-sm">
+  <nav class="navbar navbar-light bg-white shadow-sm px-3">
     <div class="container">
       <a class="navbar-brand" href="{{ route('landing') }}">
-        <img src="{{ asset('images/clinky.svg') }}" height="40" alt="Clinky">
+        <img src="{{ asset('images/clinky.svg') }}" alt="Clinky">
       </a>
       <div>
         <a href="{{ route('login') }}" class="btn btn-outline-dark me-2 rounded-pill">Login</a>
@@ -36,8 +36,8 @@
 
   {{-- FOOTER --}}
   <footer class="mt-auto bg-dark text-light p-5">
-    <div class="container">
-      <div class="row p-5">
+    <div class="container p-3">
+      <div class="row p-3">
         <div class="col-md-4 mb-4">
           <a class="navbar-brand" href="{{ route('landing') }}">
             <img src="{{ asset('images/clinky.svg') }}" height="60" alt="Clinky">

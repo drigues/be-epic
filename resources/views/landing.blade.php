@@ -5,7 +5,7 @@
 @section('content')
   {{-- HERO --}}
 
-  <section class="py-5 text-center" style="background: linear-gradient(45deg, #ffe6f0 0%, #e6eaff 100%);">
+  <section class="text-center px-3 py-5" style="background: linear-gradient(45deg, #ffe6f0 0%, #e6eaff 100%);">
     <div class="container py-5">
       <h1 class="display-3 fw-bold">A Link in Bio made for you!</h1>
       <p class="lead text-dark">
@@ -26,7 +26,7 @@
   </section>
 
   {{-- FEATURE #1 --}}
-  <section class="py-5" style="background-color: #f9cde1;">
+  <section class="py-5 px-3" style="background-color: #f9cde1;">
     <div class="container">
       <div class="row align-items-center">
         
@@ -47,7 +47,7 @@
   </section>
 
   {{-- FEATURE #2 --}}
-  <section class="py-5" style="background-color: #e3daff;">
+  <section class="py-5 px-3" style="background-color: #e3daff;">
     <div class="container">
       <div class="row align-items-center">
         <div class="col-md-6 text-center order-md-2">
@@ -67,7 +67,7 @@
   </section>
 
   {{-- CTA --}}
-  <section class="py-5 my-5 text-center">
+  <section class="py-5 px-3 text-center">
     <div class="container">
       <h2 class="fw-bold">
         Claim your Link in Bio <span class="">NOW!</span>
