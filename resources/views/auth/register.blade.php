@@ -54,10 +54,10 @@
 
     <div class="mb-4 text-center">
       <a href="{{ url('/auth/google') }}" class="btn btn-outline-dark w-100 mb-2">
-      <img src="/images/google-logo.png" style="width:20px; margin-right:10px;"> Continue with Google
+      <img src="{{ asset('images/google.png') }}" style="width:20px; margin-right:10px;"> Continue with Google
       </a>
       <a href="{{ url('/auth/facebook') }}" class="btn btn-outline-dark w-100">
-      <img src="/images/facebook-logo.png" style="width:20px; margin-right:10px;"> Continue with Facebook
+      <img src="{{ asset('images/facebook.png') }}" style="width:20px; margin-right:10px;"> Continue with Facebook
       </a>
     </div>
 

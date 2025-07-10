@@ -15,7 +15,7 @@
 
       <form action="{{ route('register') }}" method="get" 
             class="row g-2 justify-content-center mt-4">
-        <div class="col-auto input-group" style="max-width: 400px;">
+        <div class="col-auto input-group" style="max-width: 480px;">
           <span class="input-group-text">clinky.cc/</span>
           <input name="username" type="text" class="form-control" 
                  placeholder="yourname" required>
