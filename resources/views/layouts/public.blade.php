@@ -1,18 +1,18 @@
-<!DOCTYPE html>
+<!-- <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <title>{{ $page->username }} • Clinky</title>
+  <title>{{ $page->username }} • 1Clinky</title>
 
-  <!-- Bootstrap CSS (CDN) -->
+  !-- Bootstrap CSS (CDN) --
   <link
     href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
     rel="stylesheet" crossorigin="anonymous"
   >
 
-   <!-- 2) Your built CSS/JS -->
+   !-- 2) Your built CSS/JS --
     <link rel="stylesheet" href="{{ asset('build/assets/app.css') }}">
     <script src="{{ asset('build/assets/app.js') }}" defer></script>
 </head>
@@ -27,4 +27,4 @@
 
 
 </body>
-</html>
+</html>-->

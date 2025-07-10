@@ -1,0 +1,14 @@
+.btn {
+  padding: .8rem 1.6rem;
+}
+
+.navbar {
+  height: 6rem;
+}
+
+.clinky-bg {
+  background: linear-gradient(125deg, #8d368c, #55398e);
+}
+.clinky-bg:hover {
+  background: linear-gradient(125deg, #8d368c, #8d368c);
+}

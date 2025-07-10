@@ -1,3 +1,4 @@
+{{-- resources/views/pages/edit.blade.php --}}
 @extends('layouts.app')
 
 @section('content')
@@ -27,10 +28,10 @@
       method="POST"
       action="{{ route('pages.update', $page) }}"
       enctype="multipart/form-data"
+      class="mb-5"
     >
       @csrf
       @method('PUT')
-
       {{-- Directory slug --}}
       <div class="mb-4">
         <label class="form-label">Your Directory</label>
@@ -48,7 +49,6 @@
           @enderror
         </div>
       </div>
-
       {{-- Profile Picture --}}
       <div class="mb-4">
         <label class="form-label">Profile Picture</label>
@@ -75,7 +75,6 @@
           </div>
         @endif
       </div>
-
       {{-- Background Image --}}
       <div class="mb-4">
         <label class="form-label">Background Image</label>
@@ -102,7 +101,6 @@
           </div>
         @endif
       </div>
-
       {{-- Bio --}}
       <div class="mb-4">
         <label class="form-label">Bio</label>
@@ -115,7 +113,6 @@
           <div class="invalid-feedback">{{ $message }}</div>
         @enderror
       </div>
-
       <button type="submit" class="btn btn-primary">
         Save Changes
       </button>
@@ -137,62 +134,18 @@
       </a>
     </div>
 
-    @if($page->links->isEmpty())
-      <p class="text-muted">You haven’t added any links yet.</p>
-    @else
-      <table class="table table-striped align-middle">
-        <thead>
-          <tr>
-            <th>Title &amp; Icon</th>
-            <th>Type</th>
-            <th>URL</th>
-            <th class="text-end">Actions</th>
-          </tr>
-        </thead>
-        <tbody>
-          @foreach($page->links as $link)
-            <tr>
-              <td>
-                @if($link->icon)
-                  <i class="{{ $link->icon }} me-1"></i>
-                @endif
-                {{ $link->title }}
-              </td>
-              <td>{{ ucfirst($link->type) }}</td>
-              <td>
-                <a
-                  href="{{ $link->url }}"
-                  target="_blank"
-                  class="text-decoration-none"
-                >
-                  {{ \Illuminate\Support\Str::limit($link->url, 40) }}
-                </a>
-              </td>
-              <td class="text-end">
-                <a
-                  href="{{ route('links.edit', $link) }}"
-                  class="btn btn-sm btn-outline-secondary me-1"
-                >
-                  Edit
-                </a>
-                <form
-                  action="{{ route('links.destroy', $link) }}"
-                  method="POST"
-                  class="d-inline"
-                  onsubmit="return confirm('Delete this link?')"
-                >
-                  @csrf
-                  @method('DELETE')
-                  <button class="btn btn-sm btn-outline-danger">
-                    Delete
-                  </button>
-                </form>
-              </td>
-            </tr>
-          @endforeach
-        </tbody>
-      </table>
-    @endif
+    {{-- Vue draggable list --}}
+    <div id="vue-link-manager">
+      <link-manager
+        :initial-links='@json($page->links->sortBy("sort_order")->values())'
+        :page-id="{{ $page->id }}"
+      ></link-manager>
+    </div>
 
   </div>
 @endsection
+
+@push('scripts')
+  {{-- This will load the Vite HMR client and your compiled app.js (with LinkManager.vue) --}}
+  @vite('resources/js/app.js')
+@endpush
