@@ -1,6 +1,6 @@
 {{-- VIEWS/AUTH/REGISTER.BLADE.PHP --}}
 
-@extends('layouts.guest')
+@extends('layouts.auth')
 
 {{-- Show a success or info message --}}
 @if (session('status'))
@@ -30,7 +30,7 @@
       @csrf
 
       <div class="input-group mb-3">
-      <span class="input-group-text">beepi.cc/</span>
+      <span class="input-group-text">clinky.cc/</span>
       <input type="text" name="username" class="form-control form-control-lg" placeholder="yourname"
         value="{{ old('username', request('username')) }}" required>
       </div>
@@ -47,16 +47,16 @@
       class="form-control form-control-lg mb-3 @error('password_confirmation') is-invalid @enderror"
       placeholder="Confirm Password" required />
 
-      <button class="btn btn-dark btn-lg rounded-pill w-100 mb-3">
+      <button class="btn btn-dark btn-lg rounded-pill w-100 mb-3 clinky-bg">
       Sign Up
       </button>
     </form>
 
     <div class="mb-4 text-center">
-      <a href="{{ url('/auth/google') }}" class="btn btn-outline-dark w-100 mb-2">
-      <img src="{{ asset('images/google.png') }}" style="width:20px; margin-right:10px;"> Continue with Google
+      <a href="{{ url('/auth/google') }}" class="btn btn-outline-dark w-100 mb-2 rounded-pill">
+      <img src="{{ asset('images/search.png') }}" style="width:20px; margin-right:10px;"> Continue with Google
       </a>
-      <a href="{{ url('/auth/facebook') }}" class="btn btn-outline-dark w-100">
+      <a href="{{ url('/auth/facebook') }}" class="btn btn-outline-dark w-100 rounded-pill">
       <img src="{{ asset('images/facebook.png') }}" style="width:20px; margin-right:10px;"> Continue with Facebook
       </a>
     </div>

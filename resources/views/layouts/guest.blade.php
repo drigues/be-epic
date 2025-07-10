@@ -17,7 +17,7 @@
 <body class="d-flex flex-column min-vh-100">
 
   {{-- NAVBAR --}}
-  <nav class="navbar navbar-light bg-white shadow-sm px-3">
+  <nav class="navbar navbar-light bg-white shadow-sm px-1">
     <div class="container">
       <a class="navbar-brand" href="{{ route('landing') }}">
         <img src="{{ asset('images/clinky.svg') }}" alt="Clinky">

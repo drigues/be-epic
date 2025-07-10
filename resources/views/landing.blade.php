@@ -19,7 +19,7 @@
           <span class="input-group-text">clinky.cc/</span>
           <input name="username" type="text" class="form-control" 
                  placeholder="yourname" required>
-          <button class="btn text-light clinky-bg fs-5">Claim Now</button>
+          <button class="btn text-light clinky-bg fs-5">Claim</button>
         </div>
       </form>
     </div>

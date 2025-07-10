@@ -1,6 +1,6 @@
 {{-- VIEWS/AUTH/LOGIN.BLADE.PHP --}}
 
-@extends('layouts.guest')
+@extends('layouts.auth')
 
 {{-- Show a success or info message --}}
 @if (session('status'))
@@ -30,15 +30,15 @@
       @csrf
       <input type="email" name="email" class="form-control form-control-lg mb-3" placeholder="Email" required autofocus>
       <input type="password" name="password" class="form-control form-control-lg mb-4" placeholder="Password" required>
-      <button class="btn btn-dark btn-lg rounded-pill w-100 mb-3">Login</button>
+      <button class="btn btn-dark btn-lg rounded-pill w-100 mb-3 clinky-bg">Login</button>
     </form>
 
-    <div class="mb-4 text-center">
-      <a href="{{ url('/auth/google') }}" class="btn btn-outline-dark w-100 mb-2">
-      <img src="/images/google-logo.png" style="width:20px; margin-right:10px;"> Continue with Google
+    <div class="mb-4 text-center py-1">
+      <a href="{{ url('/auth/google') }}" class="btn btn-outline-dark w-100 mb-2 rounded-pill">
+      <img src="{{ asset('images/search.png') }}" style="width:20px; margin-right:10px;"> Continue with Google
       </a>
-      <a href="{{ url('/auth/facebook') }}" class="btn btn-outline-dark w-100">
-      <img src="/images/facebook-logo.png" style="width:20px; margin-right:10px;"> Continue with Facebook
+      <a href="{{ url('/auth/facebook') }}" class="btn btn-outline-dark w-100 rounded-pill">
+      <img src="{{ asset('images/facebook.png') }}" style="width:20px; margin-right:10px;"> Continue with Facebook
       </a>
     </div>
 
