@@ -58,7 +58,7 @@ class RegisteredUserController extends Controller
         ]);
 
         // 3) Create the associated page, writing username into `username`
-        $user->page()->create([
+        $user->pages()->create([
             'username'    => $validated['username'],
             // ...other defaults (bio, background)...
         ]);

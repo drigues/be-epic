@@ -22,7 +22,7 @@
 
 
 @section('content')
-  <div class="min-vh-100 d-flex align-items-center justify-content-center cbg-2">
+  <div class="min-vh-100 d-flex align-items-center justify-content-center cbg-2 px-3">
     <div class="card rounded-3 shadow p-4" style="max-width: 400px; width: 100%;">
     <h2 class="h4 text-center fw-bold mb-4">Create Your Account</h2>
 

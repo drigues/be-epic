@@ -30,16 +30,16 @@
   </nav>
 
   {{-- MAIN CONTENT --}}
-  <main class="flex-shrink-0">
+  <main class="flex-shrink-0 d-flex flex-column min-vh-100">
     @yield('content')
   </main>
 
    {{-- FOOTER --}}
   <footer class="mt-auto bg-dark text-light py-4">
     <div class="container text-center">
-      <a href="{{ route('terms') }}" class="text-white me-3">Terms</a>
-      <a href="{{ route('privacy') }}" class="text-white me-3">Privacy</a>
-      <a href="{{ route('cookies') }}" class="text-white">Cookies</a>
+      <a href="{{ route('terms') }}" class="text-light link-underline link-underline-opacity-0 me-3">Terms</a>
+      <a href="{{ route('privacy') }}" class="text-light link-underline link-underline-opacity-0 me-3">Privacy</a>
+      <a href="{{ route('cookies') }}" class="text-light link-underline link-underline-opacity-0">Cookies</a>
     </div>
   </footer>
 
