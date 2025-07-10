@@ -1,3 +1,5 @@
+# DOCKER-COMPOSE.YML
+
 version: "3.8"
 
 services:
@@ -5,7 +7,7 @@ services:
     build:
       context: .
       dockerfile: Dockerfile
-    # Use the same CMD as in Dockerfile (caches at runtime)
+    
     environment:
       - PORT=9000
     ports:
