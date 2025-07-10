@@ -1,3 +1,5 @@
+{{-- LAYOUTS/LAYERS/HEAD.BLADE.PHP --}}
+
 {{-- Google tag (gtag.js) --}}
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-ZTX7Q6K11W"></script>
 <script>
