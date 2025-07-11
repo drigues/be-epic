@@ -58,6 +58,6 @@ Route::middleware(['auth','verified'])->group(function () {
 require __DIR__.'/auth.php';
 
 // ─── CATCH-ALL PUBLIC PROFILE (EXCLUDING SYSTEM PATHS) ─────────────────────────
-Route::get('/{username}', [PageController::class, 'show'])
+Route::get('/{page:username}', [PageController::class, 'show'])
     ->name('pages.show')
     ->where('username', '^(?!login$|register$|dashboard$|auth|api|profile|pages|links|password).*$');

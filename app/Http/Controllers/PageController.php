@@ -73,7 +73,7 @@ class PageController extends Controller
      */
     public function show(Page $page)
     {
-        $page->load('links');
+        $page->load(['links' => fn($q) => $q->orderBy('sort_order')]);
         return view('pages.show', compact('page'));
     }
 
