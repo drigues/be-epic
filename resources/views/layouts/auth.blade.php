@@ -14,8 +14,7 @@
 
 </head>
 
-<body class="d-flex flex-column min-vh-100">
-
+<body class="d-flex flex-column justify-content-between min-vh-100 cbg-1">
   {{-- NAVBAR --}}
   <nav class="navbar navbar-light bg-white shadow-sm px-1">
     <div class="container">
@@ -30,19 +29,18 @@
   </nav>
 
   {{-- MAIN CONTENT --}}
-  <main class="flex-shrink-0 d-flex flex-column min-vh-100">
+  <main>
     @yield('content')
   </main>
 
    {{-- FOOTER --}}
-  <footer class="mt-auto bg-dark text-light py-4">
+  <footer class="bg-dark text-light py-4">
     <div class="container text-center">
       <a href="{{ route('terms') }}" class="text-light link-underline link-underline-opacity-0 me-3">Terms</a>
       <a href="{{ route('privacy') }}" class="text-light link-underline link-underline-opacity-0 me-3">Privacy</a>
       <a href="{{ route('cookies') }}" class="text-light link-underline link-underline-opacity-0">Cookies</a>
     </div>
   </footer>
-
 </body>
 
 </html>
