@@ -1,11 +1,12 @@
-{{-- resources/views/pages/edit.blade.php --}}
+{{-- PAGES/EDIT.BLADE.PHP --}}
+
 @extends('layouts.app')
 
 @section('content')
-  <div class="container py-5">
+  <div class="container">
 
     {{-- Page title --}}
-    <h1 class="mb-4">Edit Page</h1>
+    <h1 class="mb-4">Page</h1>
 
     {{-- Flash status --}}
     @if(session('status'))

@@ -3,6 +3,7 @@ import { createApp } from 'vue';
 import Alpine from 'alpinejs';
 import HelloWorld from './components/HelloWorld.vue';
 import LinkManager from './components/LinkManager.vue';
+import Dashboard from './components/Dashboard.vue';
 
 window.Alpine = Alpine;
 Alpine.start();
@@ -13,3 +14,5 @@ app.mount('#vue-root');
 
 app.component('link-manager', LinkManager);
 app.mount('#vue-link-manager');
+
+

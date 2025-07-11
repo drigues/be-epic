@@ -29,12 +29,11 @@
   <section class="py-5 px-3" style="background-color: #f9cde1;">
     <div class="container">
       <div class="row align-items-center">
-        
         <div class="col-md-6 text-center">
           <img src="{{ asset('images/bg.jpg') }}" 
                alt="Tasks organized" class="img-fluid rounded shadow-sm">
         </div>
-        <div class="col-md-6 p-5">
+        <div class="col-md-6 px-4 py-5">
           <h2 class="display-5 fw-bold">All your tasks organized</h2>
           <p class="lead text-dark">
             Effortlessly manage tasks, collaborate with teams, 
@@ -54,7 +53,7 @@
           <img src="{{ asset('images/couple-clinky.png') }}" 
                alt="Sharing" class="img-fluid rounded shadow-sm">
         </div>
-        <div class="col-md-6 order-md-1 p-5">
+        <div class="col-md-6 order-md-1 px-4 py-5">
           <h2 class="display-5 fw-bold">Everything you are. In one, simple link in bio.</h2>
           <p class="lead text-dark">
             Organize your identity, promote your business, 
@@ -76,7 +75,6 @@
         Start your free trial now to experience seamless project 
         management without any commitment!
       </p>
-
       <form action="{{ route('register') }}" method="get" 
             class="row g-2 justify-content-center">
         <div class="col-auto input-group" style="max-width: 400px;">

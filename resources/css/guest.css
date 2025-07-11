@@ -13,16 +13,24 @@
 }
 
 .clinky-bg {
-  background: linear-gradient(125deg, #8d368c, #55398e);
+  background: linear-gradient(175deg, #8d368c, #55398e);
 }
 
 .clinky-bg:hover {
-  background: linear-gradient(125deg, #8d368c, #8d368c);
+  background: linear-gradient(175deg, #8d368c, #8d368c);
+}
+
+.logo-white {
+  filter: invert(100%) brightness(200%);
 }
 
 @media (max-width: 576px) {
   .navbar-brand img {
     height: 30px; 
+  }
+
+  .btn {
+    padding: .5rem 1rem;
   }
   
 }

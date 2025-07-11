@@ -35,12 +35,12 @@
   </main>
 
   {{-- FOOTER --}}
-  <footer class="mt-auto bg-dark text-light p-5">
+  <footer class="mt-auto bg-dark text-light px-3 py-5">
     <div class="container p-3">
       <div class="row p-3">
         <div class="col-md-4 mb-4">
           <a class="navbar-brand" href="{{ route('landing') }}">
-            <img src="{{ asset('images/clinky.svg') }}" height="60" alt="Clinky">
+            <img src="{{ asset('images/clinky.svg') }}" height="60" alt="Clinky" class="logo-white">
           </a>
           <p class="py-3"><a class="text-light link-underline link-underline-opacity-0" href="mailto:clinkycc@gmail.com">clinkycc@gmail.com</a></p>
         </div>
@@ -55,12 +55,12 @@
         <div class="col-md-3 mb-3">
           <h6 class="text-uppercase text-secondary">Pages</h6>
           <ul class="list-unstyled">
-            <li class="p-1"><a href="{{ route('cookies') }}" class="text-light link-underline link-underline-opacity-0">Cookies</a></li>
-            <li class="p-1"><a href="{{ route('privacy') }}" class="text-light link-underline link-underline-opacity-0">Privacy</a></li>
             <li class="p-1"><a href="{{ route('terms') }}" class="text-light link-underline link-underline-opacity-0">Terms</a></li>
+            <li class="p-1"><a href="{{ route('privacy') }}" class="text-light link-underline link-underline-opacity-0">Privacy</a></li>
+            <li class="p-1"><a href="{{ route('cookies') }}" class="text-light link-underline link-underline-opacity-0">Cookies</a></li>
           </ul>
         </div>
-        <div class="col-md-2 mb-2">
+        <div class="col-md-3 mb-3">
           <h6 class="text-uppercase text-secondary">Social</h6>
           <ul class="list-unstyled">
             <li><a href="#" class="text-light link-underline link-underline-opacity-0">LinkedIn</a></li>

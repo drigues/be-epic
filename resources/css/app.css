@@ -7,3 +7,15 @@
 .cbg-2 {
   background: #55398e7a;
 }
+
+.cbg-3 {
+  background: #ecece9;
+}
+
+.bg-dash {
+  background: linear-gradient(175deg, #8d368c, #55398e);
+}
+
+#mainNav {
+  z-index: 1000;
+}

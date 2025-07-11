@@ -3,72 +3,31 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="container py-5">
-  <h2 class="mb-4">Welcome back, {{ Auth::user()->name }}!</h2>
 
-  {{-- safely count via the query builder --}}
-  @php
-    $count = Auth::user()->pages()->count();
-  @endphp
+  <div class="container">
+    <h1 class="mb-4">Dashboard</h1>
+    <h5 class="mb-4">Hi, {{ Auth::user()->name }}!</h5>
 
-  {{-- Create‐new‐directory CTA (disabled at 3) --}}
-  <div class="mb-4">
-    @if($count < 3)
-      <a href="{{ route('pages.create') }}" class="btn btn-success">
-        + Create New Directory
-      </a>
+    @php
+      $count = Auth::user()->pages()->count();
+    @endphp
+
+    @if($count === 0)
+    <p class="text-muted">You have no Clinky pages yet, <a href="{{ route('pages.create') }}">create it now.</a></p>
     @else
-      <button class="btn btn-secondary" disabled>
-        You’ve reached the 3-directory limit
-      </button>
+      @foreach(Auth::user()->pages as $page)
+        <div class="card shadow-sm mb-4 c">
+          <div class="card-header">/ {{ $page->username }}</div>
+          <div class="card-body flex flex-column align-items-center">
+            <div><a href="{{ url($page->username) }}" target="_blank">{{ url($page->username) }}</a></div>
+            <div>
+              <a href="{{ route('pages.edit', $page) }}" class="btn btn-sm btn-outline-secondary">Copy</a>
+              <a href="{{ route('pages.edit', $page) }}" class="btn btn-sm btn-outline-secondary">Share</a>
+              <a href="{{ route('pages.edit', $page) }}" class="btn btn-sm btn-primary me-2">Edit</a></div>
+          </div>
+        </div>
+      @endforeach
     @endif
   </div>
 
-  @if($count === 0)
-    <p class="text-muted">You haven’t created any directories yet.</p>
-  @else
-    <table class="table table-striped align-middle">
-      <thead>
-        <tr>
-          <th>Directory Slug</th>
-          <th>Public URL</th>
-          <th class="text-end">Actions</th>
-        </tr>
-      </thead>
-      <tbody>
-        @foreach(Auth::user()->pages as $page)
-          <tr>
-            <td><code>{{ $page->username }}</code></td>
-            <td>
-              <a href="{{ url($page->username) }}" target="_blank">
-                {{ url($page->username) }}
-              </a>
-            </td>
-            <td class="text-end">
-              <a
-                href="{{ route('pages.edit', $page) }}"
-                class="btn btn-sm btn-primary me-2"
-              >
-                Edit
-              </a>
-
-              <form
-                action="{{ route('pages.destroy', $page) }}"
-                method="POST"
-                class="d-inline"
-                onsubmit="return confirm('Are you sure? Deleting this directory will remove all its links and cannot be undone.')"
-              >
-                @csrf
-                @method('DELETE')
-                <button class="btn btn-sm btn-outline-danger">
-                  Delete
-                </button>
-              </form>
-            </td>
-          </tr>
-        @endforeach
-      </tbody>
-    </table>
-  @endif
-</div>
 @endsection

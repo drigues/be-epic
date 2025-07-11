@@ -14,28 +14,25 @@
   
 </head>
 
-<body class="d-flex flex-column min-vh-100">
+<body class="d-flex flex-column min-vh-100 cbg-3">
 
   {{-- NAVIGATION --}}
   @include('layouts.layers.navigation')
 
-  {{-- MAIN CONTENT, now inside a Bootstrap container --}}
+  {{-- MAIN CONTENT --}}
   <main class="flex-shrink-0 py-5">
+    {{-- Page title --}}
     <div class="container">
       @yield('content')
     </div>
   </main>
 
-  <div id="vue-test">
-    <hello-world></hello-world>
-  </div>
-
   {{-- FOOTER --}}
   <footer class="mt-auto bg-dark text-light py-4">
     <div class="container text-center">
-      <a href="{{ route('terms') }}" class="text-muted me-3">Terms</a>
-      <a href="{{ route('privacy') }}" class="text-muted me-3">Privacy</a>
-      <a href="{{ route('cookies') }}" class="text-muted">Cookies</a>
+      <a href="{{ route('terms') }}" class="text-secondary link-underline link-underline-opacity-0 me-3">Terms</a>
+      <a href="{{ route('privacy') }}" class="text-secondary link-underline link-underline-opacity-0 me-3">Privacy</a>
+      <a href="{{ route('cookies') }}" class="text-secondary link-underline link-underline-opacity-0">Cookies</a>
     </div>
   </footer>
 
