@@ -29,7 +29,7 @@
   </nav>
 
   {{-- MAIN CONTENT --}}
-  <main>
+  <main class="d-flex justify-content-center align-items-center">
     @yield('content')
   </main>
 
