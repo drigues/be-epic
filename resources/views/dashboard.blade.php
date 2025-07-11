@@ -18,12 +18,13 @@
       @foreach(Auth::user()->pages as $page)
         <div class="card shadow-sm mb-4 c">
           <div class="card-header">/ {{ $page->username }}</div>
-          <div class="card-body flex flex-column align-items-center">
-            <div><a href="{{ url($page->username) }}" target="_blank">{{ url($page->username) }}</a></div>
-            <div>
-              <a href="{{ route('pages.edit', $page) }}" class="btn btn-sm btn-outline-secondary">Copy</a>
-              <a href="{{ route('pages.edit', $page) }}" class="btn btn-sm btn-outline-secondary">Share</a>
-              <a href="{{ route('pages.edit', $page) }}" class="btn btn-sm btn-primary me-2">Edit</a></div>
+          <div class="card-body d-flex flex-column flex-lg-row justify-content-lg-between align-items-lg-center">
+            <div class="d-flex mb-3 mb-lg-0"><a href="{{ url($page->username) }}" target="_blank">{{ url($page->username) }}</a></div>
+              <ul class="d-flex flex-row p-0 m-0">
+                <li class="list-group-item"><a href="#" class="btn btn-sm btn-outline-secondary me-2">Copy</a></li>
+                <li class="list-group-item"><a href="#" class="btn btn-sm btn-outline-secondary me-2">Share</a></li>
+                <li class="list-group-item"><a href="{{ route('pages.edit', $page) }}" class="btn btn-sm btn-primary">Edit</a></li>
+              </ul>
           </div>
         </div>
       @endforeach

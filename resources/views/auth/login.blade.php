@@ -22,7 +22,7 @@
 
 
 @section('content')
-  <div class="px-3">
+  <div class="px-3 py-4">
     <div class="card rounded-3 shadow p-4" style="max-width: 400px; width: 100%;">
     <h2 class="h4 text-center fw-bold mb-4">Welcome Back 👋</h2>
 
