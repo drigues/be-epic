@@ -7,11 +7,13 @@
     </a>
 
     <div>
-      <ul class="mb-0">
         @guest
-          <li class="nav-item"><a class="nav-link" href="{{ route('login') }}">Login</a></li>
-          <li class="nav-item"><a class="btn btn-primary rounded-pill" href="{{ route('register') }}">Sign Up</a></li>
+          <div>
+            <a href="{{ route('login') }}" class="btn btn-outline-dark btn-light me-2 rounded-pill">Login</a>
+            <a href="{{ route('register') }}" class="btn btn-dark rounded-pill">Sign Up</a>
+          </div>
         @else
+        <ul class="mb-0">
           <li class="nav-item dropdown btn btn-sm btn-outline-light">
             <a class="nav-link dropdown-toggle" href="#" id="userMenu" role="button" data-bs-toggle="dropdown" aria-expanded="false">
               {{ Auth::user()->name }}

@@ -12,6 +12,11 @@
   background: #ecece9;
 }
 
+.ck-1 {
+  color: #8d368c;
+  font-weight: bold;
+}
+
 .bg-dash {
   background: linear-gradient(175deg, #8d368c, #55398e);
 }

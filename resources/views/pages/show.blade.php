@@ -14,7 +14,7 @@
     @endif
 
     {{-- Profile avatar --}}
-    <div class="container text-center">
+    <div class="container text-center" data-aos="fade-up" data-aos-delay="300">
     <img src="{{ $page->profile_pic
     ? asset('storage/' . $page->profile_pic)
     : asset('images/default-avatar.png') }}" class="rounded-circle border border-white"
@@ -23,7 +23,7 @@
   </div>
 
   {{-- Username & Bio --}}
-  <div class="container text-center mt-3">
+  <div class="container text-center mt-3" data-aos="fade-up" data-aos-delay="600">
     <h2 class="fw-bold">{{ $page->username }}</h2>
     @if($page->bio)
     <p class="text-muted">{{ $page->bio }}</p>
@@ -31,9 +31,10 @@
   </div>
 
   {{-- Links list --}}
-  <div class="container my-4">
+  <div class="container my-5">
     @foreach($page->links as $link)
-    <a href="{{ $link->url }}" target="_blank" class="d-block btn btn-outline-success mb-2">
+    <a href="{{ $link->url }}" target="_blank" class="d-block btn btn-outline-success mb-3 p-3"  data-aos="fade-up" data-aos-delay="900">
+    {{-- Display icon if set --}}
     @if($link->icon)
     <i class="{{ $link->icon }} me-1"></i>
     @endif

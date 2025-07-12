@@ -71,7 +71,7 @@
       Start your free trial now to experience seamless project
       management without any commitment!
     </p>
-    <form action="{{ route('register') }}" method="get" class="row g-2 justify-content-center" data-aos="fade-up" data-aos-delay="500">
+    <form action="{{ route('register') }}" method="get" class="row g-2 justify-content-center" data-aos="fade-up" data-aos-delay="300">
       <div class="col-auto input-group" style="max-width: 400px;">
       <span class="input-group-text">clinky.cc/</span>
       <input name="username" type="text" class="form-control" placeholder="yourname" required>

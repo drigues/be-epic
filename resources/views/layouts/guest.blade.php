@@ -25,7 +25,7 @@
         <img src="{{ asset('images/clinky.svg') }}" alt="Clinky">
       </a>
       <div>
-        <a href="{{ route('login') }}" class="btn btn-outline-dark me-2 rounded-pill">Login</a>
+        <a href="{{ route('login') }}" class="btn btn-light btn-outline-dark me-2 rounded-pill">Login</a>
         <a href="{{ route('register') }}" class="btn btn-dark rounded-pill">Sign Up Free</a>
       </div>
     </div>
