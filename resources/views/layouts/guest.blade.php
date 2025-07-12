@@ -10,6 +10,8 @@
   {{-- HEAD TAGS --}}
   @include('layouts.layers.head')
 
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css" rel="stylesheet" />
+
   <title>Clinky # Link in Bio Made for You</title>
 
 </head>
@@ -60,7 +62,7 @@
             <li class="p-1"><a href="{{ route('cookies') }}" class="text-light link-underline link-underline-opacity-0">Cookies</a></li>
           </ul>
         </div>
-        <div class="col-md-3 mb-3">
+        <div class="col-md-2 mb-2">
           <h6 class="text-uppercase text-secondary">Social</h6>
           <ul class="list-unstyled">
             <li><a href="#" class="text-light link-underline link-underline-opacity-0">LinkedIn</a></li>
@@ -74,6 +76,20 @@
     </div>
   </footer>
 
+  {{-- SCRIPTS --}}
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      AOS.init({
+        // Global settings:
+        duration: 600,      // animation duration (ms)
+        delay: 100,         // global delay before animate (ms)
+        once: true,         // whether animation should happen only once
+        offset: 120,        // offset (px) from top to trigger
+        easing: 'ease-out', // default easing for animations
+      });
+    });
+  </script>
 </body>
 
 </html>
