@@ -37,6 +37,9 @@ COPY --from=assets /opt/app/public/build public/build
 # 6) Copy the rest of your application
 COPY . .
 
+# 6.5) Create the public/storage symlink
+RUN php artisan storage:link
+
 # 7) Fix permissions on storage & cache
 RUN chown -R www-data:www-data storage bootstrap/cache public/build
 
